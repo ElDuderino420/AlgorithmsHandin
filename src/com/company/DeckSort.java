@@ -70,19 +70,30 @@ public class DeckSort {
 
 
         shuffleArray(cl);
+        int count = 0;
         for (Card c: cl) {
             System.out.print(c.showCard()+"\t");
+            count++;
+            if(count == 13){
+                count = 0;
+                System.out.println();
+            }
         }
         System.out.println();
         System.out.println("Is sorted: " + isSorted(cl));
 
-
-        shellSort(cl);
+        bubbleSort(cl);
+        //shellSort(cl);
         //insesrtionSort(cl);
         //selectionSort(cl);
-
+        int count2 = 0;
         for (Card c: cl) {
             System.out.print(c.showCard()+"\t");
+            count2++;
+            if(count2 == 13){
+                count2 = 0;
+                System.out.println();
+            }
         }
         System.out.println();
         System.out.println("Is sorted: " + isSorted(cl));
@@ -125,6 +136,18 @@ public class DeckSort {
         { // Insert a[i] among a[i-1], a[i-2], a[i-3]... ..
             for (int j = i; j > 0 && less(a[j], a[j-1]); j--)
                 exch(a, j, j-1);
+        }
+    }
+
+    public static void bubbleSort(Comparable[] a){
+        int i,j;
+        int n = a.length;
+        for (i = 0; i < n-1; i++) {
+            for (j = 0; j < n-i-1; j++) {
+                if(a[j].compareTo(a[j+1]) > 0){
+                    exch(a,j,j+1);
+                }
+            }
         }
     }
 
